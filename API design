@@ -1,0 +1,19 @@
+Parto dalla considerazione che non ho mai disegnato un API. Nella mia carriera mi è capitato di richiamare delle API
+che mi fornivano i dati richiesti.
+
+Ho quindi pensato che per poter procedere all'aggiornamento dell'API Musement si possono seguire i seguenti passi:
+
+1. Utilizzare il metodo PUT per inviare all'API Musement le informazioni meteo prelevate dall'API di weatherapi
+2. Eseguire un override dell'header della richiesta al fine di poter attivare il metodo PUT
+3. Verificare i codici di esito a valle dell'azione richiesta con PUT
+
+Il PUT consente ad un client di aggiornare sul server le informazioni ed aggiungerne nel caso ci sia questa necessità.
+In questo caso abbiamo bisogno di aggiungere queste informazioni che non sono al momento presenti.
+Abbiamo però la necessità di overridare l'HTTP request header per consentire al server di accettare richieste PUT.
+Sarà necessario creare un account non free ma che ci consenta di autenticarci e di poter dialogare in sicurezza con il
+server. Questo anche perchè il server deve a sua volta poterci riconoscere come client sicuro e accettare quindi nostre
+richieste.
+Ogni richiesta ritorna un esito che deve essere testato correttamente affinchè si possa accertare che tutto è andato
+come ci aspettiamo.
+
+Quanto scritto considerando che l'API Musement per le nostre richieste espone GET e POST
