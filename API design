@@ -8,7 +8,7 @@ Ho quindi pensato che per poter procedere all'aggiornamento dell'API Musement si
 3. Verificare i codici di esito a valle dell'azione richiesta con PUT
 
 Per fare tutto questo è necessario salvare in un db locale i dati che ci vengono forniti dall'API api.weatherapi.com
-La tabella sarà indicizzata per città (tramite id ritornato de musement). Conterrà i dati relativi appunto alla città,
+La tabella sarà indicizzata per città (tramite id ritornato da musement). Conterrà i dati relativi appunto alla città,
 alla latitudine e alla longitudine. Sarà poi utile avere un'altra tabella di raccolta delle previsioni dato che per ogni
 cittò l'API api.weather.com ritorna i dati di previsione per ora, dalle 00:00 alle 23:00. Quindi questa tabella sarà
 indicizzata per id relativo al record della tabella precedente (dove salveremo la città e dati di latitudine e longitudine).
@@ -29,3 +29,7 @@ come ci aspettiamo.
 
 Quanto scritto considerando che l'API Musement per le nostre richieste espone GET e POST (secondo le specifiche relative
 all'API che si possono leggere qui: https://api.musement.com/swagger_3.5.0.json).
+
+Le due tabelle potrebbero chiamarsi:
+ - musement_city
+ - weather_city
