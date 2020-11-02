@@ -7,6 +7,17 @@ Ho quindi pensato che per poter procedere all'aggiornamento dell'API Musement si
 2. Eseguire un override dell'header della richiesta al fine di poter attivare il metodo PUT
 3. Verificare i codici di esito a valle dell'azione richiesta con PUT
 
+Per fare tutto questo è necessario salvare in un db locale i dati che ci vengono forniti dall'API api.weatherapi.com
+La tabella sarà indicizzata per città (tramite id ritornato de musement). Conterrà i dati relativi appunto alla città,
+alla latitudine e alla longitudine. Sarà poi utile avere un'altra tabella di raccolta delle previsioni dato che per ogni
+cittò l'API api.weather.com ritorna i dati di previsione per ora, dalle 00:00 alle 23:00. Quindi questa tabella sarà
+indicizzata per id relativo al record della tabella precedente (dove salveremo la città e dati di latitudine e longitudine).
+Inoltre è necessario poterli aggiornare. Per fare questo è necessario predisporre un cron che giri almeno ogni notte per
+poter aggiornare i dati salvati nella tabella.
+
+A valle dell'aggiornamento dei dati di cui sopra, dovrà essere predisposto un altro cron che invierà i dati all'API
+Musement tramite metodo PUT.
+
 Il PUT consente ad un client di aggiornare sul server le informazioni ed aggiungerne nel caso ci sia questa necessità.
 In questo caso abbiamo bisogno di aggiungere queste informazioni che non sono al momento presenti.
 Abbiamo però la necessità di overridare l'HTTP request header per consentire al server di accettare richieste PUT.
@@ -16,4 +27,5 @@ richieste.
 Ogni richiesta ritorna un esito che deve essere testato correttamente affinchè si possa accertare che tutto è andato
 come ci aspettiamo.
 
-Quanto scritto considerando che l'API Musement per le nostre richieste espone GET e POST
+Quanto scritto considerando che l'API Musement per le nostre richieste espone GET e POST (secondo le specifiche relative
+all'API che si possono leggere qui: https://api.musement.com/swagger_3.5.0.json).
