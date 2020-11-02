@@ -1,0 +1,17 @@
+Premesso che non ho mai scritto unit test, per quanto riguarda questa funzionalità sarà necessario:
+
+1. Verificare l'accessibilità al database testando quindi:
+    a - errori di connessione (intercettandoli e loggando in un file di log)
+    b - successo nella connessione al db (loggando l'azione)
+2. Verificare il dialogo con l'API Musement:
+    a - testando il codice di ritorno del curl_exec
+3. Il successo del punto 1 e 2 ci consente quindi di salvare/aggiornare i dati nella tabella musement_city
+    a - controllare se c'è già la città nella tabella ed aggiornare i dati di latitudine e longitudine
+    b - inserire la città mancante con i relativi dati
+4. Verificare il dialogo con l'API api.weather.com:
+    a - testare il codice di ritorno dal curl_exec
+5. Il successo del punto 4 consente di inserire/aggiornare i dati nella tabella weather_city
+    a - verificare se esistono già record relativi a quella cittù ed aggiornarli (qui si deve verificare
+        la data per la quale sono valide le informazioni)
+    b - inserire i dati relativi alla città mancante
+    c - inserire i dati della città per i giorni successivi
